@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AI Chatbot</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i> AI Chatbot
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i> About the AI Chatbot</h5>
+                    </div>
+                    <div class="card-body">
+                        <h4>Introduction</h4>
+                        <p>
+                            This AI chatbot offers multiple models to power your conversations. Choose between powerful API-based solutions 
+                            like OpenAI's GPT-4o and Google's Gemini, or use the free NLTK-based fallback that works without any API keys.
+                        </p>
+                        
+                        <div class="card mb-3">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Available AI Models</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>OpenAI GPT-4o</strong>
+                                            <p class="mb-0 text-muted">Powerful AI with state-of-the-art capabilities (requires API key)</p>
+                                        </div>
+                                        <span class="badge bg-primary rounded-pill">Premium</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Google Gemini</strong>
+                                            <p class="mb-0 text-muted">Google's advanced AI model with comprehensive knowledge (requires API key)</p>
+                                        </div>
+                                        <span class="badge bg-success rounded-pill">Advanced</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>NLTK Rule-Based</strong>
+                                            <p class="mb-0 text-muted">Basic pattern-matching system that works without API keys</p>
+                                        </div>
+                                        <span class="badge bg-secondary rounded-pill">Free</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h4>Features</h4>
+                        <ul>
+                            <li>Natural language understanding and generation</li>
+                            <li>Contextual conversation - the chatbot remembers your previous messages</li>
+                            <li>Knowledge across a wide range of topics</li>
+                            <li>Web-based interface for easy interaction</li>
+                            <li>Command-line interface for developers</li>
+                        </ul>
+                        
+                        <h4>How It Works</h4>
+                        <p>
+                            Depending on the selected model, this chatbot uses different techniques:
+                        </p>
+                        <ul>
+                            <li><strong>OpenAI GPT-4o:</strong> State-of-the-art large language model with deep contextual understanding</li>
+                            <li><strong>Google Gemini:</strong> Advanced AI with strong reasoning and knowledge capabilities</li>
+                            <li><strong>NLTK Fallback:</strong> Rule-based pattern matching with text preprocessing and basic contextual analysis</li>
+                        </ul>
+                        
+                        <h4>Technical Details</h4>
+                        <p>
+                            The chatbot is built using:
+                        </p>
+                        <ul>
+                            <li>Python for the backend logic</li>
+                            <li>Flask for the web application framework</li>
+                            <li>OpenAI API integration for GPT-4o capabilities</li>
+                            <li>Google Generative AI for Gemini capabilities</li>
+                            <li>NLTK (Natural Language Toolkit) for local text processing as fallback</li>
+                            <li>HTML, CSS, and JavaScript for the user interface</li>
+                            <li>Bootstrap for responsive design</li>
+                        </ul>
+                        
+                        <h4>Usage Tips</h4>
+                        <ul>
+                            <li>Be specific with your questions for more accurate answers</li>
+                            <li>The chatbot maintains conversation context, so you can ask follow-up questions</li>
+                            <li>Use the Reset Chat button to start a fresh conversation</li>
+                            <li>The chatbot is designed to be helpful, harmless, and honest</li>
+                        </ul>
+                        
+                        <h4>Limitations</h4>
+                        <p>
+                            Each model has different capabilities and limitations:
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Limitations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>OpenAI GPT-4o</strong></td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Requires an OpenAI API key</li>
+                                                <li>API usage may incur costs</li>
+                                                <li>Internet connection required</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Google Gemini</strong></td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Requires a Google API key</li>
+                                                <li>API usage may incur costs</li>
+                                                <li>Internet connection required</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>NLTK Rule-Based</strong></td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Uses predefined patterns rather than deep learning</li>
+                                                <li>Limited to topics in its knowledge base</li>
+                                                <li>May not understand complex questions</li>
+                                                <li>Works best with simple, clear queries</li>
+                                                <li>No internet connectivity required (works offline)</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-3 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">
+                <small>© 2024 AI Chatbot | Powered by OpenAI, Google Gemini, and NLTK</small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

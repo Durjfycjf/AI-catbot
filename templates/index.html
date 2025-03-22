@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i> AI Chatbot
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-comments me-2"></i> Chat with AI
+                        </h5>
+                        <div class="d-flex">
+                            <div class="dropdown me-2">
+                                <button class="btn btn-sm btn-outline-info dropdown-toggle" type="button" id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-brain me-1"></i> <span id="currentModel">Auto</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="modelDropdown">
+                                    <li><a class="dropdown-item" href="#" data-model="auto">Auto-select</a></li>
+                                    <li><a class="dropdown-item" href="#" data-model="openai">OpenAI</a></li>
+                                    <li><a class="dropdown-item" href="#" data-model="gemini">Google Gemini</a></li>
+                                    <li><a class="dropdown-item" href="#" data-model="nltk">NLTK (Rule-Based)</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#" id="checkModels">Check Available Models</a></li>
+                                </ul>
+                            </div>
+                            <button id="resetChat" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash me-1"></i> Reset Chat
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="chatContainer" class="chat-container mb-3">
+                            <!-- Welcome message -->
+                            <div class="message bot-message">
+                                <div class="message-content">
+                                    <div class="message-text">
+                                        <p>Hello! I'm your AI assistant. How can I help you today?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat history will be displayed here -->
+                            {% if chat_history %}
+                                {% for exchange in chat_history %}
+                                    <div class="message user-message">
+                                        <div class="message-content">
+                                            <div class="message-text">
+                                                <p>{{ exchange.user }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="message bot-message">
+                                        <div class="message-content">
+                                            <div class="message-text">
+                                                <p>{{ exchange.bot }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            
+                            <!-- Error message if any -->
+                            {% if error %}
+                                <div class="alert alert-danger mt-3">
+                                    {{ error }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div id="typingIndicator" class="typing-indicator d-none">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        
+                        <form id="chatForm" class="chat-input-form">
+                            <div class="input-group">
+                                <input type="text" id="userInput" class="form-control" 
+                                       placeholder="Type your message here..." required>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i> Send
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i> Quick Tips</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ask me any question and I'll try to help!</li>
+                            <li class="list-group-item">I can assist with information, creative writing, problem-solving, and more.</li>
+                            <li class="list-group-item">Use the Reset Chat button to start a fresh conversation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-3 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">
+                <small>© 2024 AI Chatbot | Powered by OpenAI, Google Gemini, and NLTK</small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
